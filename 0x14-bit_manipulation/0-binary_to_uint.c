@@ -1,12 +1,13 @@
 #include "main.h"
 
 /**
- * binary_to_uint - convert binary number to an unsigned int.
- * @b: string of ones and zeros
+ * binary_to_uint - convert binary number string to unsigned int
+ * @b: the binary number
  *
- * Return: converted num or zero if there
- *	is other chars in the string than ones and zeros.
-*/
+ * Return: he converted number,
+ *		or 0 if there is one or more chars in the string
+ */
+
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int n = 0;
@@ -19,6 +20,5 @@ unsigned int binary_to_uint(const char *b)
 			return (0);
 		n = n * 2 + (*b++ - '0');
 	}
-
 	return (n);
 }
