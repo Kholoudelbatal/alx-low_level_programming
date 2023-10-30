@@ -81,10 +81,10 @@ void print_version(Elf64_Ehdr h)
 }
 
 /**
- * print_osabi - prints ELF osabi
+ * print_os_abi - prints ELF os/abi
  * @h: the ELF header struct
  */
-void print_osabi(Elf64_Ehdr h)
+void print_os_abi(Elf64_Ehdr h)
 {
 	printf("  OS/ABI:                            ");
 	switch (h.e_ident[EI_OSABI])
@@ -117,7 +117,7 @@ void print_osabi(Elf64_Ehdr h)
 			printf("UNIX - TRU64");
 			break;
 		default:
-			print_osabi_more(h);
+			print_os_abi_more(h);
 			break;
 	}
 	printf("\n");
@@ -125,10 +125,10 @@ void print_osabi(Elf64_Ehdr h)
 
 
 /**
- * print_osabi_more - prints ELF osabi more
+ * print_os_abi_more - prints ELF os/abi more
  * @h: the ELF header struct
  */
-void print_osabi_more(Elf64_Ehdr h)
+void print_os_abi_more(Elf64_Ehdr h)
 {
 	switch (h.e_ident[EI_OSABI])
 	{
@@ -151,10 +151,10 @@ void print_osabi_more(Elf64_Ehdr h)
 }
 
 /**
- * print_abiversion  - prints ELF ABI version
+ * print_abi_version  - prints ELF ABI version
  * @h: the ELF header struct
  */
-void print_abiversion(Elf64_Ehdr h)
+void print_abi_version(Elf64_Ehdr h)
 {
 	printf("  ABI Version:                       %d\n",
 		h.e_ident[EI_ABIVERSION]);
@@ -262,8 +262,8 @@ int main(int ac, char **av)
 	print_class(h);
 	print_data(h);
 	print_version(h);
-	print_osabi(h);
-	print_abiversion(h);
+	print_os_abi(h);
+	print_abi_version(h);
 	print_type(h);
 	print_entry(h);
 	if (close(fd))
